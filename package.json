@@ -1,0 +1,24 @@
+{
+  "name": "fevo-challenge",
+  "version": "1.0.0",
+  "description": "FEVO Challenge built using Typescript and NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lofisoul/fevo-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lofisoul/fevo-challenge/issues"
+  },
+  "homepage": "https://github.com/lofisoul/fevo-challenge#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.17",
+    "typescript": "^4.9.4"
+  }
+}
