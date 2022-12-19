@@ -16,9 +16,9 @@ npm i
 npm start
 ```
 
-This is a node program written in Typescript that takes the various accounts of a JSON file in `/json` and outputs an array of people with shared emails from those accounts.
+This is a node program written in Typescript that takes the various accounts of a JSON file in `/json` and outputs an array of people with shared emails from those accounts in the terminal.
 
-Example:
+**Example:**
 
 ```
 //account
