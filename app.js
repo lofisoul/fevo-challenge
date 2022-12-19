@@ -37,8 +37,8 @@ function accountsMerge(accounts) {
             }
         });
     });
-    return Object.keys(people).map(function (key) {
+    return JSON.stringify(Object.keys(people).map(function (key) {
         return people[key];
-    });
+    }));
 }
-console.log(accountsMerge(accounts));
+process.stdout.write(accountsMerge(accounts));

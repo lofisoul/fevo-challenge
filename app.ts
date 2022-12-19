@@ -16,7 +16,7 @@ interface Person {
 
 type People = Person[];
 
-function accountsMerge(accounts: Accounts): People {
+function accountsMerge(accounts: Accounts): string {
   const people: { [key: string]: Person } = {};
   const emails: { [key: string]: number } = {};
 
@@ -54,9 +54,11 @@ function accountsMerge(accounts: Accounts): People {
     });
   });
 
-  return Object.keys(people).map((key) => {
-    return people[key];
-  });
+  return JSON.stringify(
+    Object.keys(people).map((key) => {
+      return people[key];
+    })
+  );
 }
 
-console.log(accountsMerge(accounts));
+process.stdout.write(accountsMerge(accounts));
