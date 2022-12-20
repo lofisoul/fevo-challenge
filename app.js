@@ -7,8 +7,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-var accounts = require("./json/accounts.json");
-function accountsMerge(accounts) {
+var fs = require("fs");
+var stdout = require("process").stdout;
+var readline = require("readline");
+function accountsMerge(jsonFile) {
+    var accounts = JSON.parse(jsonFile);
     var people = {};
     var emails = {};
     accounts.forEach(function (account, idx) {
@@ -41,4 +44,17 @@ function accountsMerge(accounts) {
         return people[key];
     }));
 }
-process.stdout.write(accountsMerge(accounts));
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: stdout
+});
+rl.question("What is the path and filename for your accounts JSON (ex: folder/file.json)?", function (file) {
+    fs.readFile("./".concat(file), "utf8", function (err, jsonString) {
+        if (err) {
+            console.log("File read failed:", err);
+            return;
+        }
+        process.stdout.write(accountsMerge(jsonString));
+    });
+    rl.close();
+});

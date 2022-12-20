@@ -1,5 +1,6 @@
-const accounts = require("./json/accounts.json");
-
+const fs = require("fs");
+const { stdout } = require("process");
+const readline = require("readline");
 interface Account {
   name: string;
   application: string;
@@ -16,7 +17,8 @@ interface Person {
 
 type People = Person[];
 
-function accountsMerge(accounts: Accounts): string {
+function accountsMerge(jsonFile: string): string {
+  const accounts: Accounts = JSON.parse(jsonFile);
   const people: { [key: string]: Person } = {};
   const emails: { [key: string]: number } = {};
 
@@ -61,4 +63,21 @@ function accountsMerge(accounts: Accounts): string {
   );
 }
 
-process.stdout.write(accountsMerge(accounts));
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: stdout,
+});
+
+rl.question(
+  `What is the path and filename for your accounts JSON (ex: folder/file.json)?`,
+  (file) => {
+    fs.readFile(`./${file}`, "utf8", (err, jsonString) => {
+      if (err) {
+        console.log("File read failed:", err);
+        return;
+      }
+      process.stdout.write(accountsMerge(jsonString));
+    });
+    rl.close();
+  }
+);
