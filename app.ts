@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { stdout } = require("process");
 const readline = require("readline");
+
 interface Account {
   name: string;
   application: string;
